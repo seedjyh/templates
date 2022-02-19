@@ -1,6 +1,6 @@
-cmake_minimum_required(VERSION 3.20)
+cmake_minimum_required(VERSION 3.5.1)
 project(templates)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(templates unordered_map.cpp)
+add_executable(templates bit_tree.cpp)

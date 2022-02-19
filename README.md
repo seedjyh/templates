@@ -24,3 +24,5 @@ dijkstra.cpp |有向图单源最短路径（Dijkstra）算法。
 manacher.cpp | 最长回文子串（Manacher，马拉车）算法。
 topological_sort.cpp |拓扑排序。
 union_find_set.cpp |并查集。
+top_n.cpp | 获取第n大的数。
+bit_tree.cpp | 树状数组。
