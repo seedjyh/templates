@@ -18,6 +18,7 @@ class MinN {
     int n;
     long long chosenSum;
     // priority_queue<int, vector<int>, less<int>> pq;
+    // 大数先出
     struct compare {
         bool operator()(const int &n1, const int &n2) {
             return n1 < n2;
@@ -44,6 +45,7 @@ class MaxN {
     int n;
     long long chosenSum;
     // priority_queue<int, vector<int>, greater<int>> pq;
+    // 小数先出
     struct compare {
         bool operator()(const int &n1, const int &n2) {
             return n1 > n2;
