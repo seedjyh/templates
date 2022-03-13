@@ -3,4 +3,4 @@ project(templates)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(templates bit_tree.cpp)
+add_executable(templates dijkstra.cpp)
