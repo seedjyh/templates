@@ -27,3 +27,4 @@ union_find_set.cpp |并查集。
 top_n.cpp | 获取第n大的数。
 bit_tree.cpp | 树状数组。
 segment_tree.cpp | 线段树（只能添加元素；查询区间最大值）。
+prime.cpp | 欧拉素数筛。
