@@ -9,6 +9,8 @@
 #include <iostream>
 #include <queue>
 #include <vector>
+#include <functional>
+
 using namespace std;
 
 // https://leetcode-cn.com/problems/minimum-difference-in-sums-after-removal-of-elements/
@@ -92,9 +94,27 @@ public:
     }
 };
 
+// ClosureSort 用闭包比较函数排序
+class ClosureSort {
+public:
+    void Sort() {
+        vector<vector<int>> coupons{{2,5},{1,6},{3,4}};
+        function<bool(int, int)> compareRight = [&](int n1, int n2) -> bool {
+            return coupons[n1][1] > coupons[n2][1];
+        };
+        priority_queue<int, vector<int>, decltype(compareRight)> pq(compareRight);
+        for (int i = 0; i < coupons.size(); i++) {
+            pq.push(i);
+        }
+        while (!pq.empty()) {
+            auto index = pq.top();
+            pq.pop();
+            cout << coupons[index][0] << ", " << coupons[index][1] << endl;
+        }
+    }
+};
+
 int main() {
-    vector<int> nums{7,9,5,8,1,3};
-    // vector<int> nums{3,1,2};
-    cout << Solution().minimumDifference(nums) << endl;
+    ClosureSort().Sort();
     return 0;
 }
