@@ -7,6 +7,7 @@
 //
 
 #include <iostream>
+#include <vector>
 #include <unordered_map>
 using namespace std;
 
@@ -68,9 +69,37 @@ LL calcCombination(LL n, LL m) {
     return ans;
 }
 
+// calcInv 计算 1~n 的逆元（返回一个长度 n + 1 的数组）
+vector<LL> calcInv(LL n, LL mod) {
+    vector<LL> ret(n + 1);
+    ret[1] = 1;
+    for (int i = 2; i <= n; i++) {
+        ret[i] = (mod - mod / i) * ret[mod % i] % mod;
+    }
+    return ret;
+}
+
+// calcCombinationMod 直接计算 n 中取 m 的组合数（可以取模，模必须是素数）。
+LL calcCombinationMod(LL n, LL m, LL mod) {
+    if (n < m) {
+        return 0;
+    }
+    if (m > n - m) {
+        m = n - m;
+    }
+    LL ans = 1; // C(m, m)
+    auto inv = calcInv(n, mod);
+    for (LL i = m + 1; i <= n; i++) {
+        // 计算 C(i, m)
+        // C(i, m) = C(i - 1, m) * i / (i - m)
+        ans = ans * i % mod * inv[i - m] % mod;
+    }
+    return ans;
+}
+
 int main() {
     int n = 5;
-    int MOD = 10;
+    int MOD = 7;
     Combination comb;
     for (int i = 0; i <= n; i++) {
         cout << "i=" << i << ", comb=" << comb.calc(n, i) << endl;
@@ -81,6 +110,9 @@ int main() {
     }
     for (int i = 0; i <= n; i++) {
         cout << "i=" << i << ", calcCombination=" << calcCombination(n, i) << endl;
+    }
+    for (int i = 0; i <= n; i++) {
+        cout << "i=" << i << ", calcCombinationMod=" << calcCombinationMod(n, i, MOD) << endl;
     }
     return 0;
 }
