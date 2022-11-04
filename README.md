@@ -27,4 +27,5 @@
 | top_n.cpp            | 获取第 n 大的数。                                                  |
 | bit_tree.cpp         | 树状数组。                                                         |
 | segment_tree.cpp     | 线段树（只能添加元素；查询区间最大值）。                           |
+| segment_tree_2.cpp     | 线段树（查询区间的元素数量和元素和）。                           |
 | prime.cpp            | 欧拉素数筛。                                                       |
