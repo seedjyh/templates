@@ -97,6 +97,79 @@ LL calcCombinationMod(LL n, LL m, LL mod) {
     return ans;
 }
 
+
+typedef long long LL;
+
+class CombinationInvMod {
+    LL _mod;
+    vector<LL> _inv; // inv[i] 表示 i 的逆元。
+    vector<LL> _fact; // fact[i] 表示 i! (mod)
+    vector<LL> _factInv; // factInv[i] 表示 i! 的逆元。
+public:
+    // CombinationInvMod 用于O(1)计算带模的组合数。
+    // n 是最大的可能是基。
+    explicit CombinationInvMod(int n, int mod) {
+        _mod = mod;
+        _inv = calcInv(n, mod);
+        _fact = calcFact(n, mod);
+        _factInv = calcFactInv(n, mod);
+    }
+    // Comb 从 n 中取 m
+    LL Comb(int n, int m) {
+        return MOD(MOD(_fact[n] * _factInv[m]) * _factInv[n - m]);
+    }
+private:
+    LL MOD(LL raw) {
+        return raw % _mod;
+    }
+    // calcInv 计算 1~n 的逆元（返回一个长度 n + 1 的数组）
+    static vector<LL> calcInv(LL n, LL mod) {
+        vector<LL> ret(n + 1);
+        ret[1] = 1;
+        for (int i = 2; i <= n; i++) {
+            ret[i] = (mod - mod / i) * ret[mod % i] % mod;
+        }
+        return ret;
+    }
+    static vector<LL> calcFact(LL n, LL mod) {
+        vector<LL> ret(n + 1);
+        ret[0] = ret[1] = 1;
+        for (int i = 2; i <= n; i++) {
+            ret[i] = (ret[i - 1] * i % mod);
+        }
+        return ret;
+    }
+    // calcInv 计算 1! ~ n! 的逆元（返回一个长度 n + 1 的数组）
+    static vector<LL> calcFactInv(LL n, LL mod) {
+        LL factN = 1;
+        for (int i = 2; i <= n; i++) {
+            factN = factN * i % mod;
+        }
+        vector<LL> ret(n + 1);
+        ret[n] = quickPow(factN, mod - 2, mod);
+        for (int i = n - 1; i >= 1; i--) {
+            ret[i] = ret[i + 1] * (i + 1) % mod;
+        }
+        ret[0] = 1;
+        return ret;
+    }
+    // quickPow 快速幂 base ^ p (mod)
+    static LL quickPow(LL base, LL p, LL mod) {
+        if (p == 0) {
+            return 1;
+        }
+        if (p == 1) {
+            return base % mod;
+        }
+        LL tmp = quickPow(base, p / 2, mod);
+        tmp = tmp * tmp % mod;
+        if (p % 2 == 1) {
+            tmp = (tmp * base) % mod;
+        }
+        return tmp;
+    }
+};
+
 int main() {
     int n = 5;
     int MOD = 7;
@@ -113,6 +186,10 @@ int main() {
     }
     for (int i = 0; i <= n; i++) {
         cout << "i=" << i << ", calcCombinationMod=" << calcCombinationMod(n, i, MOD) << endl;
+    }
+    CombinationInvMod cim(n, MOD);
+    for (int i = 0; i <= n; i++) {
+        cout << "i=" << i << ", CombinationInvMod=" << cim.Comb(n, i) << endl;
     }
     return 0;
 }

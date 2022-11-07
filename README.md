@@ -17,15 +17,15 @@
 
 ## 算法模板
 
-| 代码文件             | 功能                                                               |
-| -------------------- | ------------------------------------------------------------------ |
-| combination.cpp      | 组合数计算。包含三种方法：传统加法、朴素乘除、逆元（可取素数模）。 |
-| dijkstra.cpp         | 有向图单源最短路径（Dijkstra）算法。                               |
-| manacher.cpp         | 最长回文子串（Manacher，马拉车）算法。                             |
-| topological_sort.cpp | 拓扑排序。                                                         |
-| union_find_set.cpp   | 并查集。                                                           |
-| top_n.cpp            | 获取第 n 大的数。                                                  |
-| bit_tree.cpp         | 树状数组。                                                         |
-| segment_tree.cpp     | 线段树（只能添加元素；查询区间最大值）。                           |
-| segment_tree_2.cpp     | 线段树（查询区间的元素数量和元素和）。                           |
-| prime.cpp            | 欧拉素数筛。                                                       |
+| 代码文件             | 功能                                                |
+| -------------------- |---------------------------------------------------|
+| combination.cpp      | 组合数计算。包含四种方法：传统加法、朴素乘除、逆元（可取素数模）、阶乘逆元（大素数模，常数时间）。 |
+| dijkstra.cpp         | 有向图单源最短路径（Dijkstra）算法。                            |
+| manacher.cpp         | 最长回文子串（Manacher，马拉车）算法。                           |
+| topological_sort.cpp | 拓扑排序。                                             |
+| union_find_set.cpp   | 并查集。                                              |
+| top_n.cpp            | 获取第 n 大的数。                                        |
+| bit_tree.cpp         | 树状数组。                                             |
+| segment_tree.cpp     | 线段树（只能添加元素；查询区间最大值）。                              |
+| segment_tree_2.cpp     | 线段树（查询区间的元素数量和元素和）。                               |
+| prime.cpp            | 欧拉素数筛。                                            |
