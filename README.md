@@ -25,7 +25,7 @@
 | topological_sort.cpp | 拓扑排序。                                             |
 | union_find_set.cpp   | 并查集。                                              |
 | top_n.cpp            | 获取第 n 大的数。                                        |
-| bit_tree.cpp         | 树状数组。                                             |
+| bit_tree.cpp         | 树状数组。有两种：单点修改区间查询；区间修改单点查询。                       |
 | segment_tree.cpp     | 线段树（只能添加元素；查询区间最大值）。                              |
 | segment_tree_2.cpp     | 线段树（查询区间的元素数量和元素和）。                               |
 | prime.cpp            | 欧拉素数筛。                                            |
