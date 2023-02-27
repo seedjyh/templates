@@ -36,6 +36,30 @@ public:
     }
 };
 
+// 区间型树状数组：区间修改（一个区间同时增加x或减少x），单点查询
+// 用差分实现
+// BitTreeRange bt(100); // n = 100
+class BitTreeRange {
+    int n;
+    BitTree bt;
+public:
+    explicit BitTreeRange(int n) : n(n), bt(n) {}
+
+    // add 从位置 l 到位置 r 所有元素增加 incr（incr 可以是负数）
+    void addRange(int l, int r, int incr) {
+        bt.add(l, incr);
+        if (r + 1 < n) {
+            bt.add(r + 1, -incr);
+        }
+    }
+
+    // query 查询位置 x 的值
+    int query(int x) {
+        return bt.sum(x);
+    }
+};
+
+
 int main() {
     BitTree bt(100);
     bt.add(3, 10);
@@ -44,5 +68,13 @@ int main() {
     cout << bt.sum(3) << endl; // 10
     cout << bt.sum(4) << endl; // 10
     cout << bt.sum(5) << endl; // 20
+
+    BitTreeRange btr(100);
+    btr.addRange(1, 98, 3);
+    btr.addRange(2, 99, 4);
+    cout << btr.query(0) << endl; // 0
+    cout << btr.query(1) << endl; // 3
+    cout << btr.query(98) << endl; // 7
+    cout << btr.query(99) << endl; // 4
     return 0;
 }
