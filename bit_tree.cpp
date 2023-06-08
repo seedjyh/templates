@@ -36,6 +36,41 @@ public:
     }
 };
 
+// 带模的树状数组
+// BitTreeMod bt(100, 1e9 + 7); // n = 100
+// bt.add(0, 11);   // position 0, add 11
+// bt.add(99, 22);  // position 99, add 22
+// bt.sum(99); // 33, from position 0 and position 99
+// bt.add(100, 1); // ERROR! 100 >= n
+class BitTreeMod {
+    int n;
+    int mod_;
+    vector<LL> sums; // 树从[0]开始
+public:
+    // n 要比最大的可能add的数大1
+    explicit BitTreeMod(int n, int mod): n(n), mod_(mod), sums(n) {}
+    // add 位置 x 的数值增加 y
+    // 0 <= x < n
+    void add(int x, LL y) {
+        for (++x; x <= n; x += x & -x) {
+            sums[x - 1] = Mod(sums[x - 1] + y);
+        }
+    }
+    // sum 统计位置 0 到 位置 x 的总和
+    // 0 <= x < n
+    LL sum(int x) {
+        LL ans = 0;
+        for (++x; x; x -= x & -x) {
+            ans = Mod(ans + sums[x - 1]);
+        }
+        return ans;
+    }
+
+    LL Mod(LL raw) {
+        return (raw % mod_ + mod_) % mod_;
+    }
+};
+
 // 区间型树状数组：区间修改（一个区间同时增加x或减少x），单点查询
 // 用差分实现
 // BitTreeRange bt(100); // n = 100
