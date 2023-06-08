@@ -16,7 +16,7 @@ typedef pair<int, int> PII;
 
 int main() {
     // comp 预期的顺序，较小的在前。和优先队列相反。
-    auto comp = [](const PII &a, const PII &b) -> bool {
+    auto comp = [&](const PII &a, const PII &b) -> bool {
         return a.second < b.second; // .second 较**小**的，更靠近[0]。
     };
     vector<PII> array;

@@ -3,8 +3,8 @@ project(templates)
 
 set(CMAKE_CXX_STANDARD 14)
 # set(CMAKE_C_COMPILER "/usr/bin/gcc")
-set(CMAKE_C_COMPILER "/opt/rh/devtoolset-8/root/usr/bin/gcc")
+# set(CMAKE_C_COMPILER "/opt/rh/devtoolset-8/root/usr/bin/gcc")
 # set(CMAKE_CXX_COMPILER "/usr/bin/g++")
-set(CMAKE_CXX_COMPILER "/opt/rh/devtoolset-8/root/usr/bin/g++")
+# set(CMAKE_CXX_COMPILER "/opt/rh/devtoolset-8/root/usr/bin/g++")
 
-add_executable(templates bit_tree.cpp)
+add_executable(templates kruskal.cpp)
