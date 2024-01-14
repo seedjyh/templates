@@ -30,3 +30,4 @@ segment_tree.cpp     | 线段树（只能添加元素；查询区间最大值）
 segment_tree_2.cpp   | 线段树（查询区间的元素数量和元素和）。
 prime.cpp            | 欧拉素数筛。
 kruskal.cpp          | 最小生成树（Kruskal算法）。
+kmp.cpp | KMP 字符串查找算法。
