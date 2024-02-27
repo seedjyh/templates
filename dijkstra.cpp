@@ -64,6 +64,7 @@ public:
     }
 };
 
+// 优先队列 dijkstra 的复杂度是 O(mlogm) 这里 m 是边的数量。所以只能用于稀疏图。稠密图要用朴素 dijkstra，复杂度 O(n^2)
 // 需要PairMap保存边。
 // 调用顺序：
 // 1 - Dijkstra(n)
