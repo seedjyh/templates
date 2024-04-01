@@ -94,6 +94,37 @@ public:
     }
 };
 
+// 区间映射树状数组：将大范围的数据压缩到小范围中。需要预先提供可能出现的数据。
+class BitTreeMap {
+    unordered_map<int, int> b2l;
+    vector<int> l2b;
+    BitTree bt;
+public:
+    // BitTreeMap 将一个大范围的数据（1e9）压缩到小范围（1e6）中
+    explicit BitTreeMap(const vector<int> &a): bt(a.size()) {
+        // BitTreeMap 初始化一个数值映射
+        set<int> as{a.begin(), a.end()};
+        l2b.resize(as.size());
+        int l2bi = 0;
+        for (auto x : as) {
+            l2b[l2bi] = x;
+            b2l[x] = l2bi;
+            l2bi++;
+        }
+    }
+
+    void add(int x, int y) {
+        bt.add(b2l[x], y);
+    }
+
+    // 统计 0~x 的数 (0 <= x < n)
+    int sum(int x) {
+        auto ite = --std::upper_bound(l2b.begin(), l2b.end(), x);
+        return bt.sum(ite - l2b.begin());
+    }
+};
+
+
 
 int main() {
     BitTree bt(100);
