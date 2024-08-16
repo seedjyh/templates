@@ -7,4 +7,4 @@ set(CMAKE_CXX_STANDARD 14)
 # set(CMAKE_CXX_COMPILER "/usr/bin/g++")
 # set(CMAKE_CXX_COMPILER "/opt/rh/devtoolset-8/root/usr/bin/g++")
 
-add_executable(templates kmp.cpp)
+add_executable(templates segment_tree_3.cpp)
