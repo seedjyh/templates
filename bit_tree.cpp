@@ -5,7 +5,6 @@
 #include <vector>
 #include <iostream>
 using namespace std;
-
 // 树状数组
 // BitTree bt(100); // n = 100
 // bt.add(0, 11);   // position 0, add 11
@@ -14,23 +13,23 @@ using namespace std;
 // bt.add(100, 1); // ERROR! 100 >= n
 class BitTree {
     int n;
-    vector<int> sums; // 树从[0]开始
+    vector<LL> sums; // 树从[0]开始
 public:
     // n 要比最大的可能add的数大1
     explicit BitTree(int n): n(n), sums(n) {}
-    // add 位置 x 的数值增加 y
-    // 0 <= x < n
-    void add(int x, int y) {
-        for (++x; x <= n; x += x & -x) {
-            sums[x - 1] += y;
+    // add 位置 pos 的数值增加 diff
+    // 0 <= pos < n
+    void add(int pos, LL diff) {
+        for (++pos; pos <= n; pos += pos & -pos) {
+            sums[pos - 1] += diff;
         }
     }
-    // sum 统计位置 0 到 位置 x 的总和
-    // 0 <= x < n
-    int sum(int x) {
+    // sum 统计位置 0 到 位置 pos 的总和
+    // 0 <= pos < n
+    LL sum(int pos) {
         int ans = 0;
-        for (++x; x; x -= x & -x) {
-            ans += sums[x - 1];
+        for (++pos; pos; pos -= pos & -pos) {
+            ans += sums[pos - 1];
         }
         return ans;
     }
